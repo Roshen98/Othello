@@ -5,6 +5,7 @@ PLAYER = 'B'
 COMPUTER = 'W'
 
 def vsAI():
+    # the game against the computer
     black = 2
     white = 2
     board = buildBoard()
@@ -24,6 +25,7 @@ def vsAI():
 - - - - - - - - 
 '''
 def switchColor(c):
+    # changes color to the opposite
     if c == PLAYER:
         return COMPUTER
     else:
@@ -151,12 +153,14 @@ def boardNotFilled(b):
     return False
     
 def hintChoice(valid):
+    # transforms the hint choices from the index form to actual real life row and column
     for i in range(len(valid)):
         valid[i][0] += 1
         valid[i][1] += 1
     return valid
     
 def play(board,b,w):
+    # start the game
     turn = PLAYER
     while boardNotFilled(board):
         if turn == PLAYER:
@@ -209,6 +213,7 @@ def play(board,b,w):
     gameResult(b,w)
 
 def count(b):
+    # returns the number of black and white pieces on the board
     black = 0
     white = 0
     for r in range(ROW):
@@ -220,6 +225,7 @@ def count(b):
     return [black, white]
     
 def gameResult(b,w):
+    # outputs the game condition and see who won
     if w > b:
         print('Congratulations! You Won!')
     elif w < b:
@@ -229,6 +235,7 @@ def gameResult(b,w):
     
 
 def validPosition(b,t):
+    # returns a list of valid positions of the given color
     validArr = []
     for i in range(ROW):
         for j in range(COLUMN):
@@ -246,6 +253,7 @@ def validPosition(b,t):
     
             
 def updateBoard(b,r,c,t):
+    # update the board i.e flips the opposite color after the user or the AI makes the move
     row = r
     col = c
     if leftValidChoice(b,r,c,t):
@@ -345,7 +353,6 @@ def printBoard(b):
     for x in range(COLUMN):
         print(x + 1, end = ' ')
     print()
-    # displays the board
     for i in range(ROW):
         print(i+1, end = ' ')
         for j in range(COLUMN):
@@ -353,6 +360,7 @@ def printBoard(b):
         print()
 
 def rule():
+    # game rule 
     print('''
     Black always moves first.
     If a player cannot outflank and flip at least one opposing disk, 
@@ -361,6 +369,7 @@ def rule():
     ''')
 
 def menu():
+    # the game menu
     while True:
         print('Welcome to Othello')
         print('1. Player vs Computer')
@@ -377,6 +386,7 @@ def menu():
             continue
 
 if __name__ == "__main__":
+    # main function
     menu()
 
 
